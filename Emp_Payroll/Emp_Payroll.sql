@@ -15,7 +15,7 @@ select * from emp_payroll;
 
 #uc3
 
-insert into emp_payroll (name, salary, start) values
+insert into emp_payroll (name,salary, start) values
 ('AACHAL',4500.0,'2021-02-16'),
 ('YASH',5500.0,'2021-04-02'),
 ('MINAL',7500.0,'2021-05-20'),
@@ -31,13 +31,37 @@ select salary from  emp_payroll where name='AAYUSHI'; #Selecting AAYUSHI entry
 #Selecting Employee from Date range
 select * from employee_payroll where start between cast('2021-04-01' as date) and date(now());
 
-#UC6 - Adds the Gender column in table and update to the name
+#UC6 - Addemp_payroll the Gender column in table and update to the name
 Alter table emp_payroll add gender char(1) after name;
 describe emp_payroll;
 SET SQL_SAFE_UPDATES=0;
-update employee_payroll set gender='M'
+update emp_payroll set gender='M'
 where name='SUNIL' or name='SAHIL'or name='YASH';
-update employee_payroll set gender='F'
+update emp_payroll set gender='F'
 where name='AACHAL' or name='MINAL' or name='AAYUSHI';
 select * from emp_payroll;
 
+
+
+#UC7-To find Aggregate values
+select salary from emp_payroll;
+#To find Aggregate Sum
+select sum(salary) from emp_payroll;
+select sum(salary) from emp_payroll where gender='F' group by gender;
+select sum(salary) from emp_payroll where gender='M' group by gender;
+#To find Maximum
+select max(salary) from emp_payroll;
+select max(salary) from emp_payroll where gender='F' group by gender;
+select max(salary) from emp_payroll where gender='M' group by gender;
+#To find Minimum
+select min(salary) from emp_payroll;
+select min(salary) from emp_payroll where gender='F' group by gender;
+select min(salary) from emp_payroll where gender='M' group by gender;
+#To find Aggregate Average
+select avg(salary) from emp_payroll;
+select avg(salary) from emp_payroll where gender='F' group by gender;
+select avg(salary) from emp_payroll where gender='M' group by gender;
+#To find Count
+select count(salary) from emp_payroll;
+select count(salary) from emp_payroll where gender='F' group by gender;
+select count(salary) from emp_payroll where gender='M' group by gender;
