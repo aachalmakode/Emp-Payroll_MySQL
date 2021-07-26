@@ -79,3 +79,11 @@ where
 
 select * from emp_payroll;     
 
+#Uc9 Extexd Employee Pay
+alter table emp_payroll 
+add basic_pay int, 
+add deductions int,
+add taxable_pay int  ,
+add tax int,
+add net_pay int;
+
